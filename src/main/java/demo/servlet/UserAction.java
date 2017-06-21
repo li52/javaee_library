@@ -21,6 +21,7 @@ import java.sql.SQLException;
 @WebServlet(urlPatterns = "/user")
 public class UserAction extends HttpServlet {
 
+
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String action = req.getParameter("action");

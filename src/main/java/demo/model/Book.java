@@ -79,7 +79,7 @@ public class Book {
         this.price = price;
         this.amount = amount;
     }
-
+    
     public Book() {
 
     }

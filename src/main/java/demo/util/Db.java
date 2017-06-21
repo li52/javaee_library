@@ -9,7 +9,7 @@ import java.sql.*;
  * on 2017/6/16.
  */
 public class Db {
-    private static final String URL = "jdbc:mysql:///?user=root&password=lipeng";
+    private static final String URL = "jdbc:mysql:///javaee_library?user=root&password=lipeng";
 
     public static Connection getConnection() {
         try {

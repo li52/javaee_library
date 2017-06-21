@@ -1,21 +1,15 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%--
-  Created by IntelliJ IDEA.
-  User: DELL
-  Date: 2017/6/16
-  Time: 9:24
-  To change this template use File | Settings | File Templates.
---%>
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
     <title>编辑图书</title>
 </head>
 <body>
-<a:if test="${sessionScope.role ne '管理员'}">
+<c:if test="${sessionScope.role ne '管理员'}">
     <c:redirect url="default.jsp"/>
 
-</a:if>
+</c:if>
 <h1>编辑图书</h1>
 ${sessionScope.username}
 <p><a href="user?action=logout">注销</a></p>

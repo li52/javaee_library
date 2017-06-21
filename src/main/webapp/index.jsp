@@ -19,6 +19,9 @@
   <c:if test="${sessionScope.role ne '用户'}">
     <c:redirect url="default.jsp"/>
   </c:if>
+  <h1>主页</h1>
+  ${sessionScope.username}
+  <p><a href="user?action=logout">注销</a></p>
   <form action="book" method="post">
       <input type="hidden" name="action" value="query">
       <select name="key">
@@ -63,9 +66,24 @@
           </table>
           <input type="submit" value="借书">
       </c:if>
-  </form> <h1>主页</h1>
-  ${sessionScope.username}
-  <p><a href="user?action=logout">注销</a></p>
+  </form>
   <hr>
+  <table>
+      <tr>
+          <th>序号</th>
+          <th>书名</th>
+          <th>借书时间</th>
+          <th>还书时间</th>
+          <th>操作</th>
+      </tr>
+      <c:forEach var="borrow" items="${sessionScope.list}" varStatus="vs">
+      <tr>
+          <td>${vs.count}</td>
+          <td>${borrow[2]}</td>
+          <td>${borrow[3]}</td>
+          <td>${borrow[4]}</td>
+          <td><a href="userBook?action=returnBook&userBookId=${borrow[0]}&bookId=${borrow[1]}">还书</a></td>
+      </tr>
+      </c:forEach>
   </body>
 </html>

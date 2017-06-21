@@ -1,6 +1,9 @@
 DROP DATABASE IF EXISTS javaee_library;
 CREATE DATABASE javaee_library;
 
+SHOW DATABASES ;
+USE javaee_library;
+
 DROP TABLE IF EXISTS javaee_library.user;
 CREATE TABLE javaee_library.user (
   id       INT                          AUTO_INCREMENT PRIMARY KEY
@@ -69,3 +72,26 @@ FROM javaee_library.book;
 
 SELECT *
 FROM javaee_library.user_book;
+
+START TRANSACTION;
+INSERT INTO javaee_library.user VALUE (NULL, 'u1', 'p', 'r');
+INSERT INTO javaee_library.user VALUE (NULL, 'u2', 'p', 'r');
+ROLLBACK;
+COMMIT;
+
+SELECT
+  b.title,
+  ub.borrowTime,
+  ub.returnTime
+FROM javaee_library.book b INNER JOIN javaee_library.user_book ub
+    ON b.id = ub.bookId
+WHERE ub.userId = 2;
+
+SELECT
+  u.username,
+  b.title,
+  ub.borrowTime,
+  ub.returnTime
+FROM javaee_library.book b INNER JOIN javaee_library.user u
+  INNER JOIN javaee_library.user_book ub
+    ON b.id = ub.bookId AND u.id = ub.userId

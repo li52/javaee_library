@@ -24,7 +24,7 @@ import java.util.List;
  * on 2017/6/16.
  */
 @WebServlet(urlPatterns = "/book")
-public class BookAction extends HttpServlet {
+public class  BookAction extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String action = req.getParameter("action");
